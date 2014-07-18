@@ -3,8 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package araiwa.views;
+
+import araiwa.AirplaneJpaController;
+import araiwa.AirplaneService;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -12,9 +16,17 @@ package araiwa.views;
  */
 public class MainFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainFrame
-     */
+    //Entity Manger Factory
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("AraiwaPU");
+
+    
+    //JPAControllers 
+    AirplaneJpaController airplaneJpaController = new AirplaneJpaController(emf);
+
+    
+    //Services
+    AirplaneService airplaneService = new AirplaneService(airplaneJpaController);
+
     public MainFrame() {
         initComponents();
     }
